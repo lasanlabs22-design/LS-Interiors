@@ -31,6 +31,15 @@
   const dots = $$('[data-slide-to]', hero);
   const pauseBtn = $('[data-hero-pause]', hero);
   let current = 0;
+  // Hero videos play on larger screens only (a phone shows just a narrow strip of a landscape clip),
+  // and never with reduced motion. Only the active slide's video plays.
+  const heroVideos = !reduceMotion && window.matchMedia('(min-width: 701px)').matches;
+  const syncHeroVideos = () => slides.forEach((s, k) => {
+    const v = $('[data-hero-video]', s);
+    if (!v || !heroVideos) return;
+    if (k === current) v.play().catch(() => {}); else v.pause();
+  });
+  $$('[data-hero-video]', hero).forEach(v => v.addEventListener('playing', () => v.classList.add('is-playing')));
   const show = i => {
     current = (i + slides.length) % slides.length;
     slides.forEach((s, k) => s.classList.toggle('is-active', k === current));
@@ -40,6 +49,7 @@
     });
     void dots[current].offsetWidth; // restart the progress animation
     dots[current].classList.add('is-active');
+    syncHeroVideos();
   };
   dots.forEach((d, k) => {
     d.addEventListener('click', () => show(k));
@@ -51,6 +61,7 @@
   };
   pauseBtn.addEventListener('click', () => setPaused(!hero.classList.contains('is-paused')));
   if (reduceMotion) { setPaused(true); }
+  syncHeroVideos();
 
   /* Reveal on scroll */
   if ('IntersectionObserver' in window) {

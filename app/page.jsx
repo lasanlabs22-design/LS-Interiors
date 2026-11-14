@@ -50,6 +50,8 @@ export default function Home() {
       {serviceVideo(s) && <video src={serviceVideo(s)} poster={s.image} muted loop playsInline preload="none" data-service-video />}
     </>
   );
+  // Hero slides work the same way: hero-1.mp4 next to hero-1.webp plays over that slide's photo.
+  const heroVideo = s => { const src = s.src.replace(/\.webp$/, '.mp4'); return existsSync(join(process.cwd(), 'public', src)) ? src : null; };
   return (
     <>
       <a className="skip-link" href="#main">Skip to content</a>
@@ -89,8 +91,9 @@ export default function Home() {
         <section className="hero" aria-labelledby="hero-title" data-hero>
           <div className="hero-slides">
             {heroSlides.map((s, i) => (
-              <figure key={s.src} className={`hero-slide${i === 0 ? ' is-active' : ''}`} data-slide>
+              <figure key={s.src} className={`hero-slide${i === 0 ? ' is-active' : ''}${heroVideo(s) ? ' has-video' : ''}`} data-slide>
                 <Image src={s.src} alt={s.alt} fill sizes="100vw" {...(i === 0 ? { loading: 'eager', fetchPriority: 'high' } : {})} />
+                {heroVideo(s) && <video src={heroVideo(s)} muted playsInline preload="none" aria-hidden="true" data-hero-video />}
               </figure>
             ))}
           </div>
