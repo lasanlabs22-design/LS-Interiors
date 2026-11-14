@@ -72,7 +72,7 @@
         const r = el.getBoundingClientRect();
         if (r.bottom < -200 || r.top > vh + 200) return;
         const offset = (r.top + r.height / 2 - vh / 2) * parseFloat(el.dataset.parallax);
-        const target = el.querySelector('img') || el;
+        const target = el.querySelector('img, video') || el;
         target.style.transform = `translate3d(0, ${offset.toFixed(1)}px, 0) scale(1.12)`;
       });
       ticking = false;
