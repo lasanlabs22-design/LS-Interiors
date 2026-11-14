@@ -439,6 +439,10 @@ export default function Home() {
           <div className="footer-bottom">
             <span>© <span data-year>2026</span> {business.legalName}. All rights reserved.</span>
             <span>Designed &amp; crafted in Tirupati</span>
+            <p className="powered-by">
+              <span>Powered by</span>
+              <span className="lasan-signature">Lasan Labs</span>
+            </p>
             <a href="#top" className="to-top">Back to top <Icons.ArrowUp size={14} /></a>
           </div>
         </div>

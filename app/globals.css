@@ -629,6 +629,18 @@ h2 em, h1 em { font-style: italic; font-weight: 400; color: var(--copper); }
 .footer-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; }
 .footer-phone { display: block; font: 400 22px var(--serif) !important; font-variant-numeric: lining-nums !important; color: #fff !important; margin-bottom: 16px; }
 .footer-bottom { padding-right: 84px !important; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; padding: 26px 0 30px; border-top: 1px solid var(--ink-line); font-size: 13px; color: var(--mist); }
+/* Lasan Labs footprint, styled as across Lasan projects: baseline-aligned (the two words use
+   different fonts), with the signature in Space Grotesk and Lasan's gradient for dark grounds. */
+.powered-by { display: flex; align-items: baseline; gap: 6px; }
+.lasan-signature {
+  font-family: var(--font-space-grotesk), var(--sans);
+  font-weight: 600;
+  letter-spacing: -.025em;
+  background: linear-gradient(100deg, #fff 10%, #b3a1ff 55%, #22d3ee);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
 .to-top { display: inline-flex; align-items: center; gap: 8px; color: #fff; }
 .to-top:hover { color: var(--brass); }
 
