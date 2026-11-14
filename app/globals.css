@@ -298,6 +298,11 @@ h2 em, h1 em { font-style: italic; font-weight: 400; color: var(--copper); }
 .hero-slide { opacity: 0; transition: opacity 1.6s ease; }
 .hero-slide img { object-fit: cover; transform: scale(1.12); }
 .hero-slide.is-active { opacity: 1; }
+/* Each slide's video sits over its photo and fades in once it is actually playing */
+.hero-slide video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .5s ease; }
+.hero-slide video.is-playing { opacity: 1; }
+/* While videos play, their photos hold still so the first frame lines up with the photo at the handover */
+.hero.plays-video .hero-slide.has-video img { animation: none; transform: none; }
 .hero-slide.is-active img { animation: kenburns 9s linear both; }
 .hero-scrim {
   z-index: -1;

@@ -46,6 +46,30 @@ Photorealistic interior photograph of a modern Indian modular kitchen in an inde
 Photorealistic interior photograph of a serene modern Indian master bedroom in a villa, evening mood. An upholstered bed with a tall headboard in oatmeal fabric set against a wall of fluted wooden panels, a floor-to-ceiling sliding wardrobe on the right with aluminium profile frames, tinted bronze glass and teak veneer panels. A Kalamkari-inspired framed textile artwork above the bed, warm bedside wall lights, a gypsum false ceiling with warm cove lighting, linen bedding with a block-print throw, a jute rug on a wooden floor. Keep the left third of the frame calm and darker for headline text. Architectural photography, 24mm lens, straight verticals, warm palette of ivory, sand, walnut, brass and muted terracotta. Editorial magazine quality. No people, no text, no logos, no watermark. Landscape 1536x1024.
 ```
 
+### Hero · Short videos (Canva AI)
+
+Each slide can play a short video over its photo on laptops and desktops; phones keep the photos. Generate in Canva AI as landscape (16:9) and attach the matching photo from `assets/` as the reference if Canva allows it. Canva gives HD (about 1280x720) and clips of around 6 seconds, which fits the 7 second slides. The clip only plays once per slide, so it does not need to loop, and the slow push-in is fine.
+
+**Save as:** `public/assets/hero-1.mp4`, `hero-2.mp4`, `hero-3.mp4` (straight into `public/assets`; videos skip `npm run images`) · **Format:** landscape 16:9, MP4, the highest quality Canva offers, under 3 MB each
+
+#### hero-1.mp4 (living room)
+
+```text
+Cinematic 10-second video, landscape 16:9, 1080p, photorealistic. A spacious modern Indian living room at golden hour. On the right, a cream boucle sofa with rust-orange and indigo ikat cushions and a terracotta throw. In the centre, a low solid walnut coffee table holding a large brass urli filled with floating orange marigolds and white jasmine, a small brass bell and books. Behind it, a fluted walnut TV wall with a floating walnut console, a bronze Nataraja statue, warm cove lighting above and a glowing strip of light below, and backlit shelves with plants and brass objects. A cane-and-teak accent chair and a tall brass vase with green branches on the left of the table. White marble floor, a woven jute rug, floor-to-ceiling sheer linen curtains on the right with warm sunlight streaming through. The left third of the frame is a plain, calm, warm ivory wall with nothing on it. Camera: one slow, smooth dolly push-in toward the coffee table and TV wall, steady like a gimbal, no shake, no cuts. Motion: the sheer curtains billow gently in a breeze, golden sunlight and soft leaf shadows drift slowly across the floor and rug, the branches in the brass vase stir. The TV screen stays black. Warm, inviting, premium mood. No people, no animals, no text, no logos, no watermark.
+```
+
+#### hero-2.mp4 (kitchen)
+
+```text
+Cinematic 10-second video, landscape 16:9, 1080p, photorealistic. A modern Indian modular kitchen in warm morning light. Matte sage-green lower cabinets with a white quartz countertop, glossy warm-white upper cabinets, a black chimney over a built-in gas hob, a white marble backsplash with warm under-cabinet lighting. On the left, a tall glass display unit with bronze aluminium frames and fluted glass, lit inside, showing copper and brass vessels and white bowls. On the right, a sage-green breakfast island with a quartz top, a brass tray with jasmine flowers and a copper jug, two cane-back wooden bar stools, and three hammered brass dome pendant lights hanging above. A wooden-framed window on the far right with green trees outside and a tulsi plant in a terracotta pot on the sill, a brass tap. Beige stone floor with a jute runner. The left third of the frame is a plain, calm, warm ivory wall with soft window shadows. Camera: one slow, smooth dolly push-in toward the island and pendants, steady like a gimbal, no shake, no cuts. Motion: the trees outside the window sway in a breeze, the tulsi plant stirs, soft sunlight and leaf shadows drift slowly across the wall and floor, the brass pendants sway very slightly. Fresh, warm, welcoming mood. No people, no animals, no text, no logos, no brand names, no watermark.
+```
+
+#### hero-3.mp4 (bedroom)
+
+```text
+Cinematic 10-second video, landscape 16:9, 1080p, photorealistic. A serene modern Indian master bedroom in the evening. A bed with a tall oatmeal upholstered headboard, cream linen bedding with a red and green block-print throw and block-print cushions, set against a wall of fluted walnut panels. Above the bed, a large framed Kalamkari-style textile artwork with a tree, a woman and a cow. Brass wall lamps with cream shades glowing on both sides, floating walnut bedside tables with a brass vase of white flowers on the left and a brass pot and a plant on the right. A floor-to-ceiling sliding wardrobe on the right with bronze tinted glass and walnut panels. A gypsum false ceiling with warm cove lighting and a walnut and brass ceiling fan, a wooden floor and a woven jute rug. The left third of the frame is a plain, calm, dark warm-grey wall. Camera: one slow, smooth dolly push-in toward the bed and the artwork, steady like a gimbal, no shake, no cuts. Motion: the ceiling fan turns slowly, the warm wall lamps and cove lighting glow softly, the white flowers in the brass vase stir slightly, gentle reflections move across the wardrobe glass. Calm, restful, luxurious mood. No people, no animals, no text, no logos, no watermark.
+```
+
 ---
 
 ## 2. Studio section
