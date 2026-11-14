@@ -262,7 +262,7 @@ export default function Home() {
             <div className="design-media reveal">
               <div className="screen">
                 {hasDesignVideo
-                  ? <video src="/assets/design-3d.mp4" poster="/assets/design-3d.webp" autoPlay muted loop playsInline preload="metadata" aria-label="3D design walkthrough shown on a large screen" data-design-video />
+                  ? <video src="/assets/design-3d.mp4" poster="/assets/design-3d.webp" autoPlay muted loop playsInline preload="metadata" aria-label="3D design walkthrough shown on a large screen" data-ambient-video />
                   : <Image src="/assets/design-3d.webp" alt="Clients reviewing a photorealistic 3D render of their living room on a large screen" fill sizes="(max-width: 900px) 92vw, 55vw" />}
               </div>
               {hasDesignVideo && (

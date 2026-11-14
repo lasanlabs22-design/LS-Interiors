@@ -105,9 +105,8 @@
   $$('[data-prefill]').forEach(a => a.addEventListener('click', () => choose(a.dataset.prefill)));
   $$('[data-prefill-message]').forEach(a => a.addEventListener('click', () => { if (!form.elements.message.value) form.elements.message.value = a.dataset.prefillMessage; }));
 
-  /* 3D design video: respect reduced motion */
-  const designVideo = $('[data-design-video]');
-  if (designVideo && reduceMotion) { designVideo.removeAttribute('autoplay'); designVideo.pause(); designVideo.controls = true; }
+  /* Background videos (3D design, studio arch): respect reduced motion */
+  if (reduceMotion) $$('[data-ambient-video]').forEach(v => { v.removeAttribute('autoplay'); v.pause(); v.controls = true; });
 
   /* Spaces: filters */
   const gallery = $('[data-gallery]');
