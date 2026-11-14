@@ -25,7 +25,7 @@ Open http://localhost:3000.
 
 See `IMAGE-PROMPTS.md`. Save an image in `/assets` with its slot name and run `npm run images`.
 
-Some photo slots can show a short looping video instead: the studio arch (`studio-main.mp4`), the 3D design screen (`design-3d.mp4`) and each service (`service-<id>.mp4`, e.g. `service-kitchen.mp4`). Put the `.mp4` straight into `public/assets`; the page uses it when the file exists and falls back to the photo otherwise. Only the active service's video plays, and videos stay paused for visitors who prefer reduced motion.
+Some photo slots can show a short looping video instead: the studio arch (`studio-main.mp4`), the 3D design screen (`design-3d.mp4`) and each service (`service-<id>.mp4`, e.g. `service-kitchen.mp4`). Each hero slide can play a clip once over its photo (`hero-1.mp4` to `hero-3.mp4`) on screens wider than 700px; phones keep the photos. Put the `.mp4` straight into `public/assets`; the page uses it when the file exists and falls back to the photo otherwise. Only the active service's video plays, and videos stay paused for visitors who prefer reduced motion.
 
 ## Production
 
