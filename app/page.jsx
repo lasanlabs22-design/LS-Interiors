@@ -42,6 +42,8 @@ export default function Home() {
   const hasStudioVideo = existsSync(join(process.cwd(), 'public', 'assets', 'studio-main.mp4'));
   // Each service photo can be swapped for a video of the same name (service-home.mp4 next to service-home.webp).
   const serviceVideo = s => { const src = s.image.replace(/\.webp$/, '.mp4'); return existsSync(join(process.cwd(), 'public', src)) ? src : null; };
+  // The photo stays underneath the video: the video fades into it just before each loop, which hides the
+  // jump when a clip ends on a different framing than it starts on (Sora's push-in clips do).
   const ServiceMedia = ({ s, sizes }) => (
     <>
       <Image src={s.image} alt="" fill sizes={sizes} />

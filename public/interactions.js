@@ -101,6 +101,10 @@
   }
   syncServiceVideos();
   window.addEventListener('resize', syncServiceVideos, { passive: true });
+  // Fade into the photo underneath during the last moment of each loop, then back in from the first frame.
+  $$('[data-service-video]').forEach(v => v.addEventListener('timeupdate', () => {
+    v.classList.toggle('is-looping', v.currentTime > 0.5 && v.duration - v.currentTime < 0.8);
+  }));
   serviceItems.forEach(item => {
     item.addEventListener('mouseenter', () => activate(item));
     item.addEventListener('focusin', () => activate(item));
