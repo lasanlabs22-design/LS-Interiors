@@ -58,6 +58,16 @@ Photorealistic interior photograph of a serene modern Indian master bedroom in a
 Photorealistic vertical interior photograph of a double-height living area in a modern Indian independent house. A tall arched window with teak frames lets in soft afternoon light. A wooden oonjal (indoor swing) hangs from the ceiling on brass chains with handloom cushions, beside a large CNC-cut wooden jaali partition casting patterned shadows on a lime-plaster wall. Terracotta and brass accents, a potted areca palm, a Kota stone floor. The main subject is centred in the frame because the image is cropped into an arch shape. Architectural photography, straight verticals, warm palette of ivory, sand, teak, brass and terracotta. Editorial magazine quality. No people, no text, no logos, no watermark. Portrait 1024x1536.
 ```
 
+### studio-main · Short video (Sora, ChatGPT's video tool)
+
+Plays inside the arch in place of the photo. Upload `assets/studio-main.png` as the reference image so the video matches the current photo. Sora only makes landscape video, which is fine: the site crops it to the tall arch from the centre, so only the middle third of the frame shows.
+
+**Save as:** `public/assets/studio-main.mp4` (straight into `public/assets`; videos skip `npm run images`) · **Format:** landscape (16:9), 1080p, about 10 seconds, no sound needed, under 6 MB
+
+```text
+Turn this photograph into a calm 10-second cinemagraph-style video, landscape 16:9. Recreate the same room, colours and lighting, with the wooden oonjal swing and the tall arched window exactly in the centre third of the frame, at the same size and framing as in the photo. Extend the room naturally to the left and right: more warm lime-plaster wall, the carved wooden jaali screen continuing on the right, a teak console with a brass lamp and a potted areca palm on the left. The camera is completely still, locked off on a tripod, with no zoom, pan or cuts. Only gentle, natural motion: the swing sways very slowly forward and back on its brass chains, a soft afternoon breeze moves the palm leaves slightly, fine dust motes drift through the sunbeam from the arched window, and the patterned shadows of the jaali shift a little across the wall as the light breathes. Warm, peaceful, quiet luxury mood. No people, no animals, no text, no logos, no watermark. The last frame must match the first frame so the video loops seamlessly.
+```
+
 ### studio-detail · Materials still life
 
 **Save as:** `studio-detail.png` · **Shape:** square
