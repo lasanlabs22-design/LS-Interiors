@@ -243,7 +243,7 @@ export default function Home() {
                 <button key={s.category} type="button" className={`space-card g-${i + 1} reveal`} data-category={s.category}
                   data-title={s.title} data-text={s.text} data-full={s.image} data-service={s.service} data-label={s.label}
                   aria-label={`${s.label}: ${s.title}. Open details`}>
-                  <Image src={s.image} alt={s.alt} fill sizes={i === 0 ? '(max-width: 700px) 92vw, 58vw' : '(max-width: 700px) 92vw, 33vw'} />
+                  <Image src={s.image} alt={s.alt} fill sizes={i === 0 || i === 2 ? '(max-width: 700px) 92vw, 40vw' : '(max-width: 700px) 92vw, 20vw'} />
                   <span className="space-tag">{s.label}</span>
                   <span className="space-caption">
                     <span><b>{s.title}</b><small>{s.mood}</small></span>
@@ -378,13 +378,15 @@ export default function Home() {
               <h3>Start your project</h3>
               <p className="form-sub">Takes under a minute. We’ll continue the conversation on WhatsApp.</p>
 
-              <div className="field">
-                <label htmlFor="name">Your name</label>
-                <input id="name" name="name" placeholder="How should we address you?" autoComplete="name" required maxLength={80} />
-              </div>
-              <div className="field">
-                <label htmlFor="phone">Phone number</label>
-                <input id="phone" name="phone" type="tel" placeholder="10-digit mobile number" autoComplete="tel" inputMode="tel" required maxLength={18} />
+              <div className="field-row">
+                <div className="field">
+                  <label htmlFor="name">Your name</label>
+                  <input id="name" name="name" placeholder="How should we address you?" autoComplete="name" required maxLength={80} />
+                </div>
+                <div className="field">
+                  <label htmlFor="phone">Phone number</label>
+                  <input id="phone" name="phone" type="tel" placeholder="10-digit mobile number" autoComplete="tel" inputMode="tel" required maxLength={18} />
+                </div>
               </div>
               <fieldset className="field">
                 <legend>What are you planning?</legend>
