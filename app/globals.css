@@ -428,27 +428,29 @@ h2 em, h1 em { font-style: italic; font-weight: 400; color: var(--copper); }
 .services { background: var(--ink); color: #fff; }
 .services h2 em { color: var(--brass); }
 .services .section-head > p { color: var(--mist); }
-.services-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(40px, 6vw, 100px); align-items: start; }
-.services-visual { position: sticky; top: 110px; aspect-ratio: 4 / 5; border-radius: var(--radius); overflow: hidden; background: var(--ink-2); }
+/* Image and list share one row height: the list's top and bottom rules line up with the image edges,
+   and the seven rows stretch to fill it (the open row takes the extra room for its text). */
+.services-grid { --sv-h: clamp(440px, calc(100svh - 330px), 620px); display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(40px, 6vw, 100px); align-items: stretch; }
+.services-visual { position: relative; min-height: var(--sv-h); border-radius: var(--radius); overflow: hidden; background: var(--ink-2); }
 .sv-frame { position: absolute; inset: 0; opacity: 0; transform: scale(1.06); transition: opacity .9s var(--ease), transform 1.4s var(--ease); }
 .sv-frame.is-active { opacity: 1; transform: none; }
 .sv-count { position: absolute; left: 22px; bottom: 20px; padding: 8px 16px; border-radius: 100px; background: #1c2526b3; backdrop-filter: blur(8px); font-size: 13px; color: var(--mist); }
 .sv-count b { color: #fff; font-weight: 600; }
-.service-list { border-top: 1px solid var(--ink-line); }
-.service { border-bottom: 1px solid var(--ink-line); padding: 30px 0; cursor: default; outline-offset: 8px; }
+.service-list { display: flex; flex-direction: column; border-top: 1px solid var(--ink-line); }
+.service { flex: 1 1 auto; display: flex; flex-direction: column; justify-content: center; border-bottom: 1px solid var(--ink-line); padding: clamp(4px, .5svh, 10px) 0; cursor: default; outline-offset: 8px; }
 .service-thumb { display: none; position: relative; }
 .service-row { display: flex; align-items: center; gap: 22px; }
 .service-num { font: italic 400 17px var(--serif); color: var(--brass); width: 26px; }
-.service-icon { display: grid; place-items: center; width: 50px; height: 50px; border-radius: 50%; border: 1px solid var(--ink-line); color: var(--brass); flex-shrink: 0; transition: background .4s, color .4s, border-color .4s; }
-.service h3 { font: 300 clamp(28px, 2.7vw, 40px)/1.1 var(--serif); color: #ffffffa6; transition: color .4s, transform .5s var(--ease); }
-.service-body { display: grid; grid-template-rows: 0fr; opacity: 0; visibility: hidden; transition: grid-template-rows .6s var(--ease), opacity .5s, margin .6s var(--ease), visibility .6s; padding-left: 118px; }
+.service-icon { display: grid; place-items: center; width: clamp(40px, 4.6svh, 50px); height: clamp(40px, 4.6svh, 50px); border-radius: 50%; border: 1px solid var(--ink-line); color: var(--brass); flex-shrink: 0; transition: background .4s, color .4s, border-color .4s; }
+.service h3 { font: 300 clamp(24px, min(2.3vw, 4svh), 34px)/1.1 var(--serif); color: #ffffffa6; transition: color .4s, transform .5s var(--ease); }
+.service-body { display: grid; grid-template-rows: 0fr; opacity: 0; visibility: hidden; transition: grid-template-rows .6s var(--ease), opacity .5s, margin .6s var(--ease), visibility .6s; padding-left: calc(70px + clamp(40px, 4.6svh, 50px)); }
 .service.is-active .service-body { visibility: visible; }
 .service-body > div { min-height: 0; overflow: hidden; }
 .service-body p { color: var(--mist); max-width: 520px; font-size: 15.5px; }
 .service.is-active h3 { color: #fff; transform: translateX(4px); }
 .service.is-active .service-icon { background: var(--brand); border-color: var(--brand); color: #fff; }
-.service.is-active .service-body { grid-template-rows: 1fr; opacity: 1; margin-top: 18px; }
-.tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 22px; }
+.service.is-active .service-body { grid-template-rows: 1fr; opacity: 1; margin-top: 10px; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 14px; }
 .tags li { font-size: 12.5px; padding: 6px 14px; border-radius: 100px; border: 1px solid var(--ink-line); color: #e9e4da; }
 
 /* Spaces gallery */

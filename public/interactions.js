@@ -81,7 +81,8 @@
     update();
   }
 
-  /* Services: active on hover, focus, tap, or as the row crosses the middle of the screen */
+  /* Services: active on hover, focus or tap. The section fits one screen, so no scroll trigger
+     (it used to make you scroll the image half out of view to reach the first row). */
   const serviceItems = $$('[data-service]', $('.service-list'));
   const count = $('[data-service-count]');
   const activate = item => {
@@ -94,10 +95,6 @@
     item.addEventListener('focusin', () => activate(item));
     item.addEventListener('click', () => activate(item));
   });
-  if ('IntersectionObserver' in window && window.matchMedia('(min-width: 901px)').matches) {
-    const so = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) activate(e.target); }), { rootMargin: '-45% 0px -45% 0px' });
-    serviceItems.forEach(s => so.observe(s));
-  }
 
   /* Enquiry prefill helpers */
   const form = $('#enquiry-form');
