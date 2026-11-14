@@ -435,6 +435,7 @@ h2 em, h1 em { font-style: italic; font-weight: 400; color: var(--copper); }
 .services-visual { position: relative; min-height: var(--sv-h); border-radius: var(--radius); overflow: hidden; background: var(--ink-2); }
 .sv-frame { position: absolute; inset: 0; opacity: 0; transform: scale(1.06); transition: opacity .9s var(--ease), transform 1.4s var(--ease); }
 .sv-frame.is-active { opacity: 1; transform: none; }
+.sv-frame video, .service-thumb video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .sv-count { position: absolute; left: 22px; bottom: 20px; padding: 8px 16px; border-radius: 100px; background: #1c2526b3; backdrop-filter: blur(8px); font-size: 13px; color: var(--mist); }
 .sv-count b { color: #fff; font-weight: 600; }
 .service-list { display: flex; flex-direction: column; border-top: 1px solid var(--ink-line); }

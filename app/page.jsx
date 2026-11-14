@@ -40,6 +40,14 @@ export default function Home() {
   const hasDesignVideo = existsSync(join(process.cwd(), 'public', 'assets', 'design-3d.mp4'));
   // Same for the studio arch: public/assets/studio-main.mp4 replaces the still photo.
   const hasStudioVideo = existsSync(join(process.cwd(), 'public', 'assets', 'studio-main.mp4'));
+  // Each service photo can be swapped for a video of the same name (service-home.mp4 next to service-home.webp).
+  const serviceVideo = s => { const src = s.image.replace(/\.webp$/, '.mp4'); return existsSync(join(process.cwd(), 'public', src)) ? src : null; };
+  const ServiceMedia = ({ s, sizes }) => (
+    <>
+      <Image src={s.image} alt="" fill sizes={sizes} />
+      {serviceVideo(s) && <video src={serviceVideo(s)} poster={s.image} muted loop playsInline preload="none" data-service-video />}
+    </>
+  );
   return (
     <>
       <a className="skip-link" href="#main">Skip to content</a>
@@ -199,7 +207,7 @@ export default function Home() {
               <div className="services-visual" aria-hidden="true">
                 {services.map((s, i) => (
                   <div key={s.id} className={`sv-frame${i === 0 ? ' is-active' : ''}`} data-service-image={s.id}>
-                    <Image src={s.image} alt="" fill sizes="(max-width: 900px) 1px, 40vw" />
+                    <ServiceMedia s={s} sizes="(max-width: 900px) 1px, 40vw" />
                   </div>
                 ))}
                 <span className="sv-count"><b data-service-count>01</b> / {pad(services.length)}</span>
@@ -208,7 +216,7 @@ export default function Home() {
               <ol className="service-list">
                 {services.map((s, i) => (
                   <li key={s.id} className={`service${i === 0 ? ' is-active' : ''}`} data-service={s.id} tabIndex={0}>
-                    <div className="service-thumb"><Image src={s.image} alt="" fill sizes="(max-width: 900px) 92vw, 1px" /></div>
+                    <div className="service-thumb"><ServiceMedia s={s} sizes="(max-width: 900px) 92vw, 1px" /></div>
                     <div className="service-row">
                       <span className="service-num">{pad(i + 1)}</span>
                       <span className="service-icon"><Icon name={s.icon} size={22} /></span>

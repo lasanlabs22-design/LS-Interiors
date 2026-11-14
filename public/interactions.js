@@ -89,7 +89,18 @@
     serviceItems.forEach(s => s.classList.toggle('is-active', s === item));
     $$('[data-service-image]').forEach(f => f.classList.toggle('is-active', f.dataset.serviceImage === item.dataset.service));
     count.textContent = String(serviceItems.indexOf(item) + 1).padStart(2, '0');
+    syncServiceVideos();
   };
+  // Only the video of the active service plays (desktop panel, or the phone thumbnail); the rest stay paused.
+  function syncServiceVideos() {
+    $$('[data-service-video]').forEach(v => {
+      const box = v.closest('.sv-frame, .service');
+      const show = !reduceMotion && box.classList.contains('is-active') && v.offsetParent !== null;
+      if (show) v.play().catch(() => {}); else v.pause();
+    });
+  }
+  syncServiceVideos();
+  window.addEventListener('resize', syncServiceVideos, { passive: true });
   serviceItems.forEach(item => {
     item.addEventListener('mouseenter', () => activate(item));
     item.addEventListener('focusin', () => activate(item));
