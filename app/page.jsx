@@ -243,7 +243,7 @@ export default function Home() {
                 <button key={s.category} type="button" className={`space-card g-${i + 1} reveal`} data-category={s.category}
                   data-title={s.title} data-text={s.text} data-full={s.image} data-service={s.service} data-label={s.label}
                   aria-label={`${s.label}: ${s.title}. Open details`}>
-                  <Image src={s.image} alt={s.alt} fill sizes={i === 0 ? '(max-width: 700px) 92vw, 58vw' : '(max-width: 700px) 92vw, 33vw'} />
+                  <Image src={s.image} alt={s.alt} fill sizes={i === 0 || i === 2 ? '(max-width: 700px) 92vw, 40vw' : '(max-width: 700px) 92vw, 20vw'} />
                   <span className="space-tag">{s.label}</span>
                   <span className="space-caption">
                     <span><b>{s.title}</b><small>{s.mood}</small></span>
