@@ -160,8 +160,7 @@ export default function Home() {
           <div className="container">
             <figure className="founder reveal">
               <div className="founder-photo">
-                <Image src="/assets/founder.webp" alt={`${founder.name}, founder of LS Interiors, in the company's furniture factory in Tirupati`} fill sizes="(max-width: 700px) 92vw, 400px" />
-                <span className="founder-chip"><Icons.MapPin size={14} /> Our factory, Tirupati</span>
+                <Image src="/assets/founder.webp" alt={`${founder.name}, founder of LS Interiors`} fill sizes="(max-width: 700px) 92vw, 400px" />
               </div>
               <div className="founder-body">
                 <p className="eyebrow">Meet the founder</p>
