@@ -38,7 +38,7 @@
   const syncHeroVideos = () => slides.forEach((s, k) => {
     const v = $('[data-hero-video]', s);
     if (!v || !heroVideos) return;
-    if (k === current) { v.play().catch(() => {}); return; }
+    if (k === current) { if (hero.classList.contains('is-paused')) v.pause(); else v.play().catch(() => {}); return; }
     v.pause();
     // Once the slide has faded out, go back to the photo and the first frame for its next turn
     setTimeout(() => { if (k !== current) { v.classList.remove('is-playing'); v.currentTime = 0; } }, 1700);
@@ -62,6 +62,7 @@
   const setPaused = paused => {
     hero.classList.toggle('is-paused', paused);
     pauseBtn.setAttribute('aria-label', paused ? 'Play slideshow' : 'Pause slideshow');
+    syncHeroVideos();
   };
   pauseBtn.addEventListener('click', () => setPaused(!hero.classList.contains('is-paused')));
   if (reduceMotion) { setPaused(true); }
