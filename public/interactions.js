@@ -39,11 +39,18 @@
     const v = $('[data-hero-video]', s);
     if (!v || !heroVideos) return;
     if (k === current) { if (hero.classList.contains('is-paused')) v.pause(); else v.play().catch(() => {}); return; }
+    // Load the next slide's video in the background so it starts on time
+    if (k === (current + 1) % slides.length && v.readyState === 0) { v.preload = 'auto'; v.load(); }
     v.pause();
     // Once the slide has faded out, go back to the photo and the first frame for its next turn
     setTimeout(() => { if (k !== current) { v.classList.remove('is-playing'); v.currentTime = 0; } }, 1700);
   });
-  $$('[data-hero-video]', hero).forEach(v => v.addEventListener('playing', () => v.classList.add('is-playing')));
+  $$('[data-hero-video]', hero).forEach(v => v.addEventListener('playing', () => {
+    v.classList.add('is-playing');
+    // Count the slide's time from when its video actually starts, not from when it began loading
+    const dot = dots[slides.indexOf(v.closest('[data-slide]'))];
+    if (v.currentTime < 0.3 && dot === dots[current]) { dot.classList.remove('is-active'); void dot.offsetWidth; dot.classList.add('is-active'); }
+  }));
   const show = i => {
     current = (i + slides.length) % slides.length;
     slides.forEach((s, k) => s.classList.toggle('is-active', k === current));
