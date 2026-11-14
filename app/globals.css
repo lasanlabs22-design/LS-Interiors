@@ -628,7 +628,9 @@ h2 em, h1 em { font-style: italic; font-weight: 400; color: var(--copper); }
 .footer-cols a:hover { color: #fff; }
 .footer-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; }
 .footer-phone { display: block; font: 400 22px var(--serif) !important; font-variant-numeric: lining-nums !important; color: #fff !important; margin-bottom: 16px; }
-.footer-bottom { padding-right: 84px !important; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; padding: 26px 0 30px; border-top: 1px solid var(--ink-line); font-size: 13px; color: var(--mist); }
+/* Equal side columns keep the Lasan Labs credit exactly centred */
+.footer-bottom { display: grid; grid-template-columns: 1fr auto 1fr; align-items: baseline; gap: 16px; padding: 26px 0 30px; border-top: 1px solid var(--ink-line); font-size: 13px; color: var(--mist); }
+.footer-bottom .to-top { justify-self: end; margin-right: 84px; /* clears the floating contact dock */ }
 /* Lasan Labs footprint, styled as across Lasan projects: baseline-aligned (the two words use
    different fonts), with the signature in Space Grotesk and Lasan's gradient for dark grounds. */
 .powered-by { display: flex; align-items: baseline; gap: 6px; }
@@ -787,7 +789,10 @@ h2 em, h1 em { font-style: italic; font-weight: 400; color: var(--copper); }
   .steps { grid-template-columns: 1fr; }
   .cta-actions .btn { flex: 1 1 100%; }
   .footer-cols { grid-template-columns: 1fr; gap: 36px; }
-  .footer-bottom { flex-direction: column; padding-bottom: 100px; }
+  .footer-bottom { grid-template-columns: 1fr; padding-bottom: 100px; }
+  .footer-bottom .to-top { justify-self: start; margin-right: 0; }
+  /* on phones the credit closes the page, centred on its own line */
+  .powered-by { order: 3; justify-content: center; padding-top: 18px; border-top: 1px solid var(--ink-line); }
   .dock { right: 16px; bottom: 16px; }
   .dock-btn { width: 54px; height: 54px; }
   .dock-label { display: none; }
