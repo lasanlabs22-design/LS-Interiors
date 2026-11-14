@@ -34,10 +34,14 @@
   // Hero videos play on larger screens only (a phone shows just a narrow strip of a landscape clip),
   // and never with reduced motion. Only the active slide's video plays.
   const heroVideos = !reduceMotion && window.matchMedia('(min-width: 701px)').matches;
+  if (heroVideos) hero.classList.add('plays-video');
   const syncHeroVideos = () => slides.forEach((s, k) => {
     const v = $('[data-hero-video]', s);
     if (!v || !heroVideos) return;
-    if (k === current) v.play().catch(() => {}); else v.pause();
+    if (k === current) { v.play().catch(() => {}); return; }
+    v.pause();
+    // Once the slide has faded out, go back to the photo and the first frame for its next turn
+    setTimeout(() => { if (k !== current) { v.classList.remove('is-playing'); v.currentTime = 0; } }, 1700);
   });
   $$('[data-hero-video]', hero).forEach(v => v.addEventListener('playing', () => v.classList.add('is-playing')));
   const show = i => {
