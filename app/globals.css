@@ -568,12 +568,12 @@ h2 em, h1 em { font-style: italic; font-weight: 400; color: var(--copper); }
 /* Contact */
 .contact { background: var(--linen); }
 .contact-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: clamp(48px, 7vw, 110px); align-items: start; }
-.contact-info h2 { margin-bottom: 24px; }
+.contact-info h2 { margin-bottom: clamp(14px, 2.4svh, 22px); }
 .contact-info > p:not(.eyebrow) { color: var(--stone); max-width: 460px; }
-.contact-list { margin-top: 44px; display: grid; gap: 4px; }
-.contact-list li { display: flex; gap: 18px; align-items: flex-start; padding: 18px 0; border-top: 1px solid var(--sand); }
+.contact-list { margin-top: clamp(20px, 3.4svh, 36px); display: grid; gap: 0; }
+.contact-list li { display: flex; gap: 18px; align-items: flex-start; padding: clamp(10px, 1.8svh, 16px) 0; border-top: 1px solid var(--sand); }
 .contact-list small { display: block; font-size: 11.5px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--stone); margin-bottom: 4px; }
-.contact-list a:not(.inline-link), .contact-list address { font: 400 22px/1.35 var(--serif); font-variant-numeric: lining-nums; }
+.contact-list a:not(.inline-link), .contact-list address { font: 400 clamp(19px, 2.4svh, 22px)/1.3 var(--serif); font-variant-numeric: lining-nums; }
 .contact-list .social { margin-top: 8px; }
 .contact-list .social a { font: inherit; }
 .icon-ring-wa { color: #128c4a; }
@@ -583,17 +583,18 @@ h2 em, h1 em { font-style: italic; font-weight: 400; color: var(--copper); }
 .enquiry {
   background: var(--paper);
   border-radius: 6px;
-  padding: clamp(28px, 4vw, 52px);
+  padding: clamp(22px, min(3.4vw, 4svh), 44px);
   box-shadow: 0 40px 80px -40px #1c25264d, 0 0 0 1px #1c25260d;
 }
-.enquiry h3 { font: 400 clamp(32px, 3vw, 42px)/1.1 var(--serif); }
-.form-sub { color: var(--stone); font-size: 15px; margin: 8px 0 30px; }
-.field { border: 0; margin: 0 0 22px; padding: 0; min-width: 0; }
+.enquiry h3 { font: 400 clamp(30px, min(2.8vw, 5svh), 40px)/1.1 var(--serif); }
+.form-sub { color: var(--stone); font-size: 15px; margin: 6px 0 clamp(18px, 3svh, 28px); }
+.field { border: 0; margin: 0 0 clamp(14px, 2.2svh, 20px); padding: 0; min-width: 0; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .field > label, .field > legend { display: block; font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 10px; padding: 0; }
 .optional { text-transform: none; letter-spacing: 0; font-weight: 400; color: var(--stone); }
 .field input, .field textarea {
   width: 100%;
-  padding: 15px 18px;
+  padding: 13px 16px;
   border: 1px solid var(--line);
   border-radius: 6px;
   background: #fff;
@@ -601,20 +602,20 @@ h2 em, h1 em { font-style: italic; font-weight: 400; color: var(--copper); }
   outline: none;
   transition: border-color .3s, box-shadow .3s;
 }
-.field textarea { resize: vertical; min-height: 96px; }
+.field textarea { resize: vertical; height: clamp(64px, 9svh, 96px); min-height: 64px; }
 .field input::placeholder, .field textarea::placeholder { color: #9b9a92; }
 .field input:focus, .field textarea:focus { border-color: var(--copper); box-shadow: 0 0 0 4px #b4591b1f; }
 .field input[aria-invalid="true"] { border-color: #b3261e; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .chip { position: relative; }
 .chip input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
-.chip span { display: inline-block; padding: 10px 16px; border-radius: 100px; border: 1px solid var(--line); background: #fff; font-size: 14px; transition: background .25s, color .25s, border-color .25s; }
+.chip span { display: inline-block; padding: 8px 14px; border-radius: 100px; border: 1px solid var(--line); background: #fff; font-size: 13.5px; transition: background .25s, color .25s, border-color .25s; }
 .chip:hover span { border-color: var(--ink); }
 .chip input:checked + span { background: var(--ink); border-color: var(--ink); color: #fff; }
 .chip input:focus-visible + span { outline: 2px solid var(--brand); outline-offset: 2px; }
 .form-error { color: #b3261e; font-size: 14px; min-height: 0; margin-bottom: 10px; }
 .form-error:empty { display: none; }
-.form-note { margin-top: 14px; text-align: center; font-size: 13px; color: var(--stone); }
+.form-note { margin-top: 10px; text-align: center; font-size: 13px; color: var(--stone); }
 .form-note a { color: var(--copper); text-decoration: underline; text-underline-offset: 3px; }
 
 /* Footer */
@@ -783,6 +784,7 @@ h2 em, h1 em { font-style: italic; font-weight: 400; color: var(--copper); }
   .service-icon { width: 44px; height: 44px; }
   .stages { grid-template-columns: 1fr; }
   .stage, .stage:nth-child(even) { padding: 18px 0; border-left: 0; }
+  .field-row { grid-template-columns: 1fr; gap: 0; }
   .stats { grid-template-columns: 1fr 1fr; }
   .stat:nth-child(3) { border-left: 0; padding-left: 0; }
   .stat:nth-child(-n+2) { border-bottom: 1px solid var(--line); }

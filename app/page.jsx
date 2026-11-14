@@ -378,13 +378,15 @@ export default function Home() {
               <h3>Start your project</h3>
               <p className="form-sub">Takes under a minute. We’ll continue the conversation on WhatsApp.</p>
 
-              <div className="field">
-                <label htmlFor="name">Your name</label>
-                <input id="name" name="name" placeholder="How should we address you?" autoComplete="name" required maxLength={80} />
-              </div>
-              <div className="field">
-                <label htmlFor="phone">Phone number</label>
-                <input id="phone" name="phone" type="tel" placeholder="10-digit mobile number" autoComplete="tel" inputMode="tel" required maxLength={18} />
+              <div className="field-row">
+                <div className="field">
+                  <label htmlFor="name">Your name</label>
+                  <input id="name" name="name" placeholder="How should we address you?" autoComplete="name" required maxLength={80} />
+                </div>
+                <div className="field">
+                  <label htmlFor="phone">Phone number</label>
+                  <input id="phone" name="phone" type="tel" placeholder="10-digit mobile number" autoComplete="tel" inputMode="tel" required maxLength={18} />
+                </div>
               </div>
               <fieldset className="field">
                 <legend>What are you planning?</legend>
