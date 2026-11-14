@@ -38,6 +38,8 @@ export default function Home() {
   // Put public/assets/design-3d.mp4 in place and the 3D section plays it instead of the still image.
   // Checked per render so a newly added video shows up without restarting the dev server.
   const hasDesignVideo = existsSync(join(process.cwd(), 'public', 'assets', 'design-3d.mp4'));
+  // Same for the studio arch: public/assets/studio-main.mp4 replaces the still photo.
+  const hasStudioVideo = existsSync(join(process.cwd(), 'public', 'assets', 'studio-main.mp4'));
   return (
     <>
       <a className="skip-link" href="#main">Skip to content</a>
@@ -135,7 +137,9 @@ export default function Home() {
           <div className="container studio-grid">
             <div className="studio-media reveal">
               <div className="arch" data-parallax="0.06">
-                <Image src="/assets/studio-main.webp" alt="Double-height room with a wooden oonjal swing on brass chains, a tall arched window and a carved jaali screen" fill sizes="(max-width: 900px) 90vw, 42vw" />
+                {hasStudioVideo
+                  ? <video src="/assets/studio-main.mp4" poster="/assets/studio-main.webp" autoPlay muted loop playsInline preload="metadata" aria-label="Double-height room with a wooden oonjal swing gently swaying on brass chains, sunlight moving through a carved jaali screen" data-ambient-video />
+                  : <Image src="/assets/studio-main.webp" alt="Double-height room with a wooden oonjal swing on brass chains, a tall arched window and a carved jaali screen" fill sizes="(max-width: 900px) 90vw, 42vw" />}
               </div>
               <div className="studio-inset">
                 <Image src="/assets/studio-detail.webp" alt="Material samples: wood veneers, laminates, fluted glass, a jaali panel, brass handle and handloom fabrics" fill sizes="(max-width: 900px) 45vw, 18vw" />
@@ -262,7 +266,7 @@ export default function Home() {
             <div className="design-media reveal">
               <div className="screen">
                 {hasDesignVideo
-                  ? <video src="/assets/design-3d.mp4" poster="/assets/design-3d.webp" autoPlay muted loop playsInline preload="metadata" aria-label="3D design walkthrough shown on a large screen" data-design-video />
+                  ? <video src="/assets/design-3d.mp4" poster="/assets/design-3d.webp" autoPlay muted loop playsInline preload="metadata" aria-label="3D design walkthrough shown on a large screen" data-ambient-video />
                   : <Image src="/assets/design-3d.webp" alt="Clients reviewing a photorealistic 3D render of their living room on a large screen" fill sizes="(max-width: 900px) 92vw, 55vw" />}
               </div>
               {hasDesignVideo && (
