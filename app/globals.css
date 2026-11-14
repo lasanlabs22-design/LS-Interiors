@@ -502,7 +502,7 @@ h2 em, h1 em { font-style: italic; font-weight: 400; color: var(--copper); }
 /* Free 3D design (dark) */
 .design { background: var(--ink); color: #fff; overflow: hidden; }
 .design h2 em { color: var(--brass); }
-.design-copy h2 { margin-bottom: 26px; }
+.design-copy h2 { margin-bottom: clamp(16px, 2.6svh, 24px); }
 .design .lead { color: #ece7dd; margin-bottom: 8px; }
 .design-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(48px, 6vw, 96px); align-items: center; }
 .design-media { position: relative; }
@@ -514,8 +514,8 @@ h2 em, h1 em { font-style: italic; font-weight: 400; color: var(--copper); }
 .design-badge { position: absolute; right: -18px; top: -22px; display: grid; place-content: center; text-align: center; width: 112px; height: 112px; border-radius: 50%; background: var(--brand); color: #fff; box-shadow: 0 20px 40px -18px #000; transform: rotate(-8deg); }
 .design-badge b { font: italic 500 34px/1 var(--serif); }
 .design-badge small { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; margin-top: 4px; }
-.design-points { margin: 30px 0 38px; border-top: 1px solid var(--ink-line); }
-.design-points li { display: flex; gap: 18px; align-items: flex-start; padding: 20px 0; border-bottom: 1px solid var(--ink-line); }
+.design-points { margin: clamp(18px, 3svh, 28px) 0 clamp(22px, 3.6svh, 34px); border-top: 1px solid var(--ink-line); }
+.design-points li { display: flex; gap: 18px; align-items: flex-start; padding: clamp(9px, 1.4svh, 18px) 0; border-bottom: 1px solid var(--ink-line); }
 .design-points .service-icon { background: transparent; }
 .design-points h3 { font: 400 23px/1.2 var(--serif); margin-bottom: 4px; }
 .design-points p { font-size: 15px; color: var(--mist); line-height: 1.6; }
