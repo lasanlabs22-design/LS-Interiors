@@ -38,6 +38,18 @@ export default function Home() {
   // Put public/assets/design-3d.mp4 in place and the 3D section plays it instead of the still image.
   // Checked per render so a newly added video shows up without restarting the dev server.
   const hasDesignVideo = existsSync(join(process.cwd(), 'public', 'assets', 'design-3d.mp4'));
+  // Same for the studio arch: public/assets/studio-main.mp4 replaces the still photo.
+  const hasStudioVideo = existsSync(join(process.cwd(), 'public', 'assets', 'studio-main.mp4'));
+  // Each service photo can be swapped for a video of the same name (service-home.mp4 next to service-home.webp).
+  const serviceVideo = s => { const src = s.image.replace(/\.webp$/, '.mp4'); return existsSync(join(process.cwd(), 'public', src)) ? src : null; };
+  // The photo stays underneath the video: the video fades into it just before each loop, which hides the
+  // jump when a clip ends on a different framing than it starts on (Sora's push-in clips do).
+  const ServiceMedia = ({ s, sizes }) => (
+    <>
+      <Image src={s.image} alt="" fill sizes={sizes} />
+      {serviceVideo(s) && <video src={serviceVideo(s)} poster={s.image} muted loop playsInline preload="none" data-service-video />}
+    </>
+  );
   return (
     <>
       <a className="skip-link" href="#main">Skip to content</a>
@@ -135,7 +147,9 @@ export default function Home() {
           <div className="container studio-grid">
             <div className="studio-media reveal">
               <div className="arch" data-parallax="0.06">
-                <Image src="/assets/studio-main.webp" alt="Double-height room with a wooden oonjal swing on brass chains, a tall arched window and a carved jaali screen" fill sizes="(max-width: 900px) 90vw, 42vw" />
+                {hasStudioVideo
+                  ? <video src="/assets/studio-main.mp4" poster="/assets/studio-main.webp" autoPlay muted loop playsInline preload="metadata" aria-label="Double-height room with a wooden oonjal swing gently swaying on brass chains, sunlight moving through a carved jaali screen" data-ambient-video />
+                  : <Image src="/assets/studio-main.webp" alt="Double-height room with a wooden oonjal swing on brass chains, a tall arched window and a carved jaali screen" fill sizes="(max-width: 900px) 90vw, 42vw" />}
               </div>
               <div className="studio-inset">
                 <Image src="/assets/studio-detail.webp" alt="Material samples: wood veneers, laminates, fluted glass, a jaali panel, brass handle and handloom fabrics" fill sizes="(max-width: 900px) 45vw, 18vw" />
@@ -160,8 +174,7 @@ export default function Home() {
           <div className="container">
             <figure className="founder reveal">
               <div className="founder-photo">
-                <Image src="/assets/founder.webp" alt={`${founder.name}, founder of LS Interiors, in the company's furniture factory in Tirupati`} fill sizes="(max-width: 700px) 92vw, 400px" />
-                <span className="founder-chip"><Icons.MapPin size={14} /> Our factory, Tirupati</span>
+                <Image src="/assets/founder.webp" alt={`${founder.name}, founder of LS Interiors`} fill sizes="(max-width: 700px) 92vw, 400px" />
               </div>
               <div className="founder-body">
                 <p className="eyebrow">Meet the founder</p>
@@ -196,7 +209,7 @@ export default function Home() {
               <div className="services-visual" aria-hidden="true">
                 {services.map((s, i) => (
                   <div key={s.id} className={`sv-frame${i === 0 ? ' is-active' : ''}`} data-service-image={s.id}>
-                    <Image src={s.image} alt="" fill sizes="(max-width: 900px) 1px, 40vw" />
+                    <ServiceMedia s={s} sizes="(max-width: 900px) 1px, 40vw" />
                   </div>
                 ))}
                 <span className="sv-count"><b data-service-count>01</b> / {pad(services.length)}</span>
@@ -205,7 +218,7 @@ export default function Home() {
               <ol className="service-list">
                 {services.map((s, i) => (
                   <li key={s.id} className={`service${i === 0 ? ' is-active' : ''}`} data-service={s.id} tabIndex={0}>
-                    <div className="service-thumb"><Image src={s.image} alt="" fill sizes="(max-width: 900px) 92vw, 1px" /></div>
+                    <div className="service-thumb"><ServiceMedia s={s} sizes="(max-width: 900px) 92vw, 1px" /></div>
                     <div className="service-row">
                       <span className="service-num">{pad(i + 1)}</span>
                       <span className="service-icon"><Icon name={s.icon} size={22} /></span>
@@ -244,7 +257,7 @@ export default function Home() {
                 <button key={s.category} type="button" className={`space-card g-${i + 1} reveal`} data-category={s.category}
                   data-title={s.title} data-text={s.text} data-full={s.image} data-service={s.service} data-label={s.label}
                   aria-label={`${s.label}: ${s.title}. Open details`}>
-                  <Image src={s.image} alt={s.alt} fill sizes={i === 0 ? '(max-width: 700px) 92vw, 58vw' : '(max-width: 700px) 92vw, 33vw'} />
+                  <Image src={s.image} alt={s.alt} fill sizes={i === 0 || i === 2 ? '(max-width: 700px) 92vw, 40vw' : '(max-width: 700px) 92vw, 20vw'} />
                   <span className="space-tag">{s.label}</span>
                   <span className="space-caption">
                     <span><b>{s.title}</b><small>{s.mood}</small></span>
@@ -263,7 +276,7 @@ export default function Home() {
             <div className="design-media reveal">
               <div className="screen">
                 {hasDesignVideo
-                  ? <video src="/assets/design-3d.mp4" poster="/assets/design-3d.webp" autoPlay muted loop playsInline preload="metadata" aria-label="3D design walkthrough shown on a large screen" data-design-video />
+                  ? <video src="/assets/design-3d.mp4" poster="/assets/design-3d.webp" autoPlay muted loop playsInline preload="metadata" aria-label="3D design walkthrough shown on a large screen" data-ambient-video />
                   : <Image src="/assets/design-3d.webp" alt="Clients reviewing a photorealistic 3D render of their living room on a large screen" fill sizes="(max-width: 900px) 92vw, 55vw" />}
               </div>
               {hasDesignVideo && (
@@ -379,13 +392,15 @@ export default function Home() {
               <h3>Start your project</h3>
               <p className="form-sub">Takes under a minute. We’ll continue the conversation on WhatsApp.</p>
 
-              <div className="field">
-                <label htmlFor="name">Your name</label>
-                <input id="name" name="name" placeholder="How should we address you?" autoComplete="name" required maxLength={80} />
-              </div>
-              <div className="field">
-                <label htmlFor="phone">Phone number</label>
-                <input id="phone" name="phone" type="tel" placeholder="10-digit mobile number" autoComplete="tel" inputMode="tel" required maxLength={18} />
+              <div className="field-row">
+                <div className="field">
+                  <label htmlFor="name">Your name</label>
+                  <input id="name" name="name" placeholder="How should we address you?" autoComplete="name" required maxLength={80} />
+                </div>
+                <div className="field">
+                  <label htmlFor="phone">Phone number</label>
+                  <input id="phone" name="phone" type="tel" placeholder="10-digit mobile number" autoComplete="tel" inputMode="tel" required maxLength={18} />
+                </div>
               </div>
               <fieldset className="field">
                 <legend>What are you planning?</legend>
@@ -439,7 +454,10 @@ export default function Home() {
           </div>
           <div className="footer-bottom">
             <span>© <span data-year>2026</span> {business.legalName}. All rights reserved.</span>
-            <span>Designed &amp; crafted in Tirupati</span>
+            <p className="powered-by">
+              <span>Powered by</span>
+              <span className="lasan-signature">Lasan Labs</span>
+            </p>
             <a href="#top" className="to-top">Back to top <Icons.ArrowUp size={14} /></a>
           </div>
         </div>

@@ -58,6 +58,16 @@ Photorealistic interior photograph of a serene modern Indian master bedroom in a
 Photorealistic vertical interior photograph of a double-height living area in a modern Indian independent house. A tall arched window with teak frames lets in soft afternoon light. A wooden oonjal (indoor swing) hangs from the ceiling on brass chains with handloom cushions, beside a large CNC-cut wooden jaali partition casting patterned shadows on a lime-plaster wall. Terracotta and brass accents, a potted areca palm, a Kota stone floor. The main subject is centred in the frame because the image is cropped into an arch shape. Architectural photography, straight verticals, warm palette of ivory, sand, teak, brass and terracotta. Editorial magazine quality. No people, no text, no logos, no watermark. Portrait 1024x1536.
 ```
 
+### studio-main · Short video (Sora, ChatGPT's video tool)
+
+Plays inside the arch in place of the photo. Upload `assets/studio-main.png` as the reference image so the video matches the current photo. Sora only makes landscape video, which is fine: the site crops it to the tall arch from the centre, so only the middle third of the frame shows.
+
+**Save as:** `public/assets/studio-main.mp4` (straight into `public/assets`; videos skip `npm run images`) · **Format:** landscape (16:9), 1080p, about 10 seconds, no sound needed, under 6 MB
+
+```text
+Turn this photograph into a calm 10-second cinemagraph-style video, landscape 16:9. Recreate the same room, colours and lighting, with the wooden oonjal swing and the tall arched window exactly in the centre third of the frame, at the same size and framing as in the photo. Extend the room naturally to the left and right: more warm lime-plaster wall, the carved wooden jaali screen continuing on the right, a teak console with a brass lamp and a potted areca palm on the left. The camera is completely still, locked off on a tripod, with no zoom, pan or cuts. Only gentle, natural motion: the swing sways very slowly forward and back on its brass chains, a soft afternoon breeze moves the palm leaves slightly, fine dust motes drift through the sunbeam from the arched window, and the patterned shadows of the jaali shift a little across the wall as the light breathes. Warm, peaceful, quiet luxury mood. No people, no animals, no text, no logos, no watermark. The last frame must match the first frame so the video loops seamlessly.
+```
+
 ### studio-detail · Materials still life
 
 **Save as:** `studio-detail.png` · **Shape:** square
@@ -126,6 +136,54 @@ Photorealistic vertical interior photograph of a modern Indian washroom in a pre
 
 ```text
 Photorealistic vertical interior photograph of a modern Indian boutique office reception. A curved reception desk in oak veneer with a white quartz top, a terracotta-coloured accent wall with an empty space where a logo would go, a CNC wooden jaali partition separating a small meeting room with glass walls in aluminium profile frames, terrazzo flooring, a gypsum ceiling with linear profile lights, lounge chairs and large indoor plants. Keep the main subject in the centre of the frame. Architectural photography, straight verticals, bright daylight, palette of ivory, oak, terracotta and brass. Magazine quality. No people, no text, no logos, no lettering, no watermark. Portrait 1024x1536.
+```
+
+### Services · Short videos (Sora, ChatGPT's video tool)
+
+Each service photo can be replaced by a short looping video. Only the video of the service being viewed plays; the others stay paused. For each one, upload the matching photo from `assets/` (for example `assets/service-home.png`) as the reference image, then paste its prompt.
+
+**Save as:** `public/assets/service-<name>.mp4`, the same name as the photo (straight into `public/assets`; videos skip `npm run images`) · **Format:** whatever shape Sora gives (the site crops from the centre), about 6 to 10 seconds, no sound needed, under 3 MB each. Windows hides file extensions, so type the name without `.mp4` if it already shows as a video file, or it ends up as `.mp4.mp4`.
+
+#### service-home.mp4
+
+```text
+Turn this photograph into a calm 8-second cinemagraph-style video. Keep the room, framing, colours and lighting exactly as in the photo, with the dining table in the centre. The camera is completely still, locked off on a tripod, with no zoom, pan or cuts. Only gentle, natural motion: the sheer curtains by the balcony sway softly in a breeze, the plants on the balcony move slightly, the ceiling fan turns slowly, the lilies in the vase on the table stir, the warm glow of the cove lighting and the crockery unit's interior lights breathes softly, and a patch of afternoon sunlight drifts slowly across the marble floor. Warm, peaceful mood. No people, no animals, no text, no logos, no watermark. The last frame must match the first frame so the video loops seamlessly.
+```
+
+#### service-kitchen.mp4
+
+```text
+Turn this photograph into an 8-second cinematic video with clearly visible motion. Keep the kitchen, colours and lighting exactly as in the photo, with the window in the centre. Camera move: a slow, smooth dolly push-in straight down the middle of the kitchen toward the window for the first 4 seconds, then an equally slow pull-back to the exact starting framing for the last 4 seconds, like a gimbal shot, steady with no shake and no cuts. At the same time the scene is alive: the ceiling fan spins steadily at a clearly visible speed, the trees outside the window sway noticeably in a breeze, the bamboo blind moves slightly, the money plant and the tulsi plant sway, and soft steam curls up from the brass pot on the hob. The under-cabinet lights glow warmly. Fresh morning mood. No people, no animals, no text, no logos, no brand names, no watermark. The video must end on exactly the same frame it starts on so it loops seamlessly.
+```
+
+#### service-wardrobe.mp4
+
+```text
+Turn this photograph into a calm 8-second cinemagraph-style video. Keep the bedroom, wardrobe, framing, colours and lighting exactly as in the photo, with the open wardrobe section in the centre. The camera is completely still, locked off on a tripod, with no zoom, pan or cuts. Only gentle, natural motion: the warm LED lights inside the wardrobe slowly brighten and soften, the hanging kurtas sway very slightly as if from a soft draught, the sheer curtain on the left moves gently, the lilies on the dressing table stir, and the pendant light above the dressing table glows. The sliding doors stay still. Warm evening mood. No people, no animals, no text, no logos, no watermark. The last frame must match the first frame so the video loops seamlessly.
+```
+
+#### service-furniture.mp4
+
+```text
+Turn this photograph into a calm 8-second cinemagraph-style video. Keep the room, TV unit, framing, colours and lighting exactly as in the photo, with the fluted TV wall in the centre. The camera is completely still, locked off on a tripod, with no zoom, pan or cuts. Only gentle, natural motion: the backlit shelves and the glass display cabinet slowly glow brighter and then soften, the light catches and glints on the brass vessels, the sheer curtain on the left sways gently, the money plant and the flowers in the terracotta vase stir slightly, and a soft band of evening sunlight moves slowly across the marble floor and the cane chair. The TV screen stays black and blank. Warm evening mood. No people, no animals, no text, no logos, no watermark. The last frame must match the first frame so the video loops seamlessly.
+```
+
+#### service-ceiling.mp4
+
+```text
+Turn this photograph into a calm 8-second cinemagraph-style video. Keep the room, ceiling, framing, colours and lighting exactly as in the photo, with the layered ceiling and sofa in the centre. The camera is completely still, locked off on a tripod, with no zoom, pan or cuts. Only gentle, natural motion: the cove lighting around the wooden rafters and the track lights slowly fade up from a soft dusk glow to full warm light and then ease back down, the picture lights and the brass floor lamp glow warmly, the candle on the coffee table flickers, and the palm and the curtain by the window sway slightly. Warm evening mood. No people, no animals, no text, no logos, no watermark. The last frame must match the first frame so the video loops seamlessly.
+```
+
+#### service-washroom.mp4
+
+```text
+Turn this photograph into an 8-second cinematic video with clearly visible motion. Keep the washroom, colours and lighting exactly as in the photo, with the vanity and mirror in the centre. Camera move: a slow, smooth dolly push-in straight toward the vanity for the first 4 seconds, then an equally slow pull-back to the exact starting framing for the last 4 seconds, like a gimbal shot, steady with no shake and no cuts. At the same time the scene is alive: the single round black rain shower head at the top right, inside the glass enclosure, is turned on, and a soft, even curtain of water falls straight down from it onto the shower floor. All the water stays completely inside the glass enclosure; nothing sprays or splashes outside the glass partition, and the floor outside stays dry. The handheld shower stays hanging on the wall, switched off. Soft warm steam rises from the shower and fills the enclosure with a light, misty fog that slowly drifts over the top of the glass into the room as a gentle haze, softly catching the warm light from the mirror and niches. The fog gradually mists the glass panel, a few droplets run down the inside of the glass, and the hanging plants sway gently. The fog stays light and airy, so the vanity, mirror and shower remain clearly visible. The backlit mirror and the niche lights glow warmly. Keep every fixture exactly as in the photo: exactly one shower head, do not add any new shower heads, taps, fixtures or objects. Calm, spa-like mood. No people, no animals, no text, no logos, no brand names, no watermark. The video must end on exactly the same frame it starts on so it loops seamlessly.
+```
+
+#### service-commercial.mp4
+
+```text
+Turn this photograph into an 8-second cinematic video with clearly visible motion. Keep the reception, colours and lighting exactly as in the photo, with the reception desk in the centre. Camera move: a slow, smooth dolly push-in straight toward the reception desk for the first 4 seconds, then an equally slow pull-back to the exact starting framing for the last 4 seconds, like a gimbal shot, steady with no shake and no cuts. At the same time the scene is alive: the large banana-leaf plants by the windows sway noticeably in a breeze, the trees outside the windows move, sunlight through the windows sweeps slowly across the terrazzo floor and the armchairs, and the patterned shadows of the wooden jaali partition slide across the floor. The brass table lamp and the meeting room pendant glow warmly. The meeting room behind the glass is empty. Bright, welcoming daytime mood. No people, no animals, no text, no logos, no lettering, no watermark. The video must end on exactly the same frame it starts on so it loops seamlessly.
 ```
 
 ---

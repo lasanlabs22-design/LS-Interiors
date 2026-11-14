@@ -72,7 +72,7 @@
         const r = el.getBoundingClientRect();
         if (r.bottom < -200 || r.top > vh + 200) return;
         const offset = (r.top + r.height / 2 - vh / 2) * parseFloat(el.dataset.parallax);
-        const target = el.querySelector('img') || el;
+        const target = el.querySelector('img, video') || el;
         target.style.transform = `translate3d(0, ${offset.toFixed(1)}px, 0) scale(1.12)`;
       });
       ticking = false;
@@ -81,23 +81,35 @@
     update();
   }
 
-  /* Services: active on hover, focus, tap, or as the row crosses the middle of the screen */
+  /* Services: active on hover, focus or tap. The section fits one screen, so no scroll trigger
+     (it used to make you scroll the image half out of view to reach the first row). */
   const serviceItems = $$('[data-service]', $('.service-list'));
   const count = $('[data-service-count]');
   const activate = item => {
     serviceItems.forEach(s => s.classList.toggle('is-active', s === item));
     $$('[data-service-image]').forEach(f => f.classList.toggle('is-active', f.dataset.serviceImage === item.dataset.service));
     count.textContent = String(serviceItems.indexOf(item) + 1).padStart(2, '0');
+    syncServiceVideos();
   };
+  // Only the video of the active service plays (desktop panel, or the phone thumbnail); the rest stay paused.
+  function syncServiceVideos() {
+    $$('[data-service-video]').forEach(v => {
+      const box = v.closest('.sv-frame, .service');
+      const show = !reduceMotion && box.classList.contains('is-active') && v.offsetParent !== null;
+      if (show) v.play().catch(() => {}); else v.pause();
+    });
+  }
+  syncServiceVideos();
+  window.addEventListener('resize', syncServiceVideos, { passive: true });
+  // Fade into the photo underneath during the last moment of each loop, then back in from the first frame.
+  $$('[data-service-video]').forEach(v => v.addEventListener('timeupdate', () => {
+    v.classList.toggle('is-looping', v.currentTime > 0.5 && v.duration - v.currentTime < 0.8);
+  }));
   serviceItems.forEach(item => {
     item.addEventListener('mouseenter', () => activate(item));
     item.addEventListener('focusin', () => activate(item));
     item.addEventListener('click', () => activate(item));
   });
-  if ('IntersectionObserver' in window && window.matchMedia('(min-width: 901px)').matches) {
-    const so = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) activate(e.target); }), { rootMargin: '-45% 0px -45% 0px' });
-    serviceItems.forEach(s => so.observe(s));
-  }
 
   /* Enquiry prefill helpers */
   const form = $('#enquiry-form');
@@ -108,9 +120,8 @@
   $$('[data-prefill]').forEach(a => a.addEventListener('click', () => choose(a.dataset.prefill)));
   $$('[data-prefill-message]').forEach(a => a.addEventListener('click', () => { if (!form.elements.message.value) form.elements.message.value = a.dataset.prefillMessage; }));
 
-  /* 3D design video: respect reduced motion */
-  const designVideo = $('[data-design-video]');
-  if (designVideo && reduceMotion) { designVideo.removeAttribute('autoplay'); designVideo.pause(); designVideo.controls = true; }
+  /* Background videos (3D design, studio arch): respect reduced motion */
+  if (reduceMotion) $$('[data-ambient-video]').forEach(v => { v.removeAttribute('autoplay'); v.pause(); v.controls = true; });
 
   /* Spaces: filters */
   const gallery = $('[data-gallery]');
