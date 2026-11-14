@@ -441,16 +441,16 @@ h2 em, h1 em { font-style: italic; font-weight: 400; color: var(--copper); }
 .service-thumb { display: none; position: relative; }
 .service-row { display: flex; align-items: center; gap: 22px; }
 .service-num { font: italic 400 17px var(--serif); color: var(--brass); width: 26px; }
-.service-icon { display: grid; place-items: center; width: 50px; height: 50px; border-radius: 50%; border: 1px solid var(--ink-line); color: var(--brass); flex-shrink: 0; transition: background .4s, color .4s, border-color .4s; }
-.service h3 { font: 300 clamp(28px, 2.7vw, 40px)/1.1 var(--serif); color: #ffffffa6; transition: color .4s, transform .5s var(--ease); }
-.service-body { display: grid; grid-template-rows: 0fr; opacity: 0; visibility: hidden; transition: grid-template-rows .6s var(--ease), opacity .5s, margin .6s var(--ease), visibility .6s; padding-left: 118px; }
+.service-icon { display: grid; place-items: center; width: clamp(40px, 4.6svh, 50px); height: clamp(40px, 4.6svh, 50px); border-radius: 50%; border: 1px solid var(--ink-line); color: var(--brass); flex-shrink: 0; transition: background .4s, color .4s, border-color .4s; }
+.service h3 { font: 300 clamp(24px, min(2.3vw, 4svh), 34px)/1.1 var(--serif); color: #ffffffa6; transition: color .4s, transform .5s var(--ease); }
+.service-body { display: grid; grid-template-rows: 0fr; opacity: 0; visibility: hidden; transition: grid-template-rows .6s var(--ease), opacity .5s, margin .6s var(--ease), visibility .6s; padding-left: calc(70px + clamp(40px, 4.6svh, 50px)); }
 .service.is-active .service-body { visibility: visible; }
 .service-body > div { min-height: 0; overflow: hidden; }
 .service-body p { color: var(--mist); max-width: 520px; font-size: 15.5px; }
 .service.is-active h3 { color: #fff; transform: translateX(4px); }
 .service.is-active .service-icon { background: var(--brand); border-color: var(--brand); color: #fff; }
-.service.is-active .service-body { grid-template-rows: 1fr; opacity: 1; margin-top: 18px; }
-.tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 22px; }
+.service.is-active .service-body { grid-template-rows: 1fr; opacity: 1; margin-top: 10px; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 14px; }
 .tags li { font-size: 12.5px; padding: 6px 14px; border-radius: 100px; border: 1px solid var(--ink-line); color: #e9e4da; }
 
 /* Spaces gallery */
